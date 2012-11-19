@@ -1,0 +1,18 @@
+<div class="page-header">
+  <h1>Alls of the Posts</h1>
+</div>
+
+<%= link_to "New Post", new_post_path, class: "btn btn-primary" %>
+
+<% @posts.each do |posts| %>
+  <div class = "pots">
+    <strong><%= posts.title %></strong>
+    <p><%= posts.content %></p>
+    <div class="meta">
+      <%= link_to time_ago_in_words(posts.created_at) + " ago", posts %>
+      <span class = "admin"> 
+       | <%= link_to "Delete", posts, method: :delete, data: { confirm: "Are you suere your want to delete this status?"} %>
+      </span>
+    </div>
+  </div>
+<% end %>
