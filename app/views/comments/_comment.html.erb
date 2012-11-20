@@ -1,9 +1,11 @@
 <div>
-  <strong>COMMENTS:__________________________________________________________</strong>
   <p>
+    <div class = "well">
       <strong>Pseudonimo:</strong></br>
       <%= comment.pseudonimo %></br>
       <strong>Comment:</strong></br>
-      <%= comment.mensaje %>
+      <%= comment.mensaje %></br>
+      <strong><%= time_ago_in_words(comment.created_at) + " ago" %></strong>
+    </div>
   </p>
 </div>
