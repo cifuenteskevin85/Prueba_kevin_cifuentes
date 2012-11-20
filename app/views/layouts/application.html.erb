@@ -9,7 +9,7 @@
   <body>
     
     <div class="navbar">
-      <div class="navbar-inner">
+      <div class="navbar navbar-inner">
         <a class="brand" href="#">Blog KDC</a>
         <ul class="nav">
           <li class="active"><%= link_to "All Blog", posts_path %></li>
@@ -25,9 +25,20 @@
           </ul>
       </div>
     </div>
-    <div>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+    <div class="container">
+      <% if flash[:notice] %>
+        <div class = "alert alert-success">
+          <button class="close" data-dismiss="alert">x</button>
+          <%= flash[:notice] %>
+        </div>
+      <% end %>
+      <% if flash[:alert] %>
+        <div class = "alert alert-error">
+          <button class="close" data-dismiss="alert">x</button>
+          <%= flash[:alert] %>
+        </div>
+      <% end %>
+
       <%= yield %>
     </div>
   </body>

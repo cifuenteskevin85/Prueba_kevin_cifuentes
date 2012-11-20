@@ -1,24 +1,27 @@
-<p id="notice"><%= notice %></p>
-<p>ID = <%= @post.id %></p>
-<p>
-  <b>Title:</b>
-  <%= @post.title %>
-</p>
+<div class="row">
+	<div class = "span60">
+		<p id="notice"><%= notice %></p>
+		<p>ID = <%= @post.id %></p>
+		<p>
+		  <b>Title:</b>
+		  <%= @post.title %>
+		</p>
 
-<p>
-  <b>Content:</b>
-  <%= @post.content %>
-</p>
+		<p>
+		  <b>Content:</b>
+		  <%= @post.content %>
+		</p>
 
-<p>
-  <p>
-    <strong>COMMENTS:__________________________________________________________</strong>
-  </p>
-  <%= render @post.comments %>
-</p>
+		<p>
+		  <p>
+		    <strong>COMMENTS:__________________________________________________________</strong>
+		  </p>
+		  <%= render @post.comments %>
+		</p>
 
-<p>
-  <%= render "comments/form" %>
-</p>
+		<p>
+		  <%= render "comments/form" %>
+		</p>
 
-<%= link_to 'Back', posts_path %>
+		<%= link_to 'Back', posts_path %>
+</div>

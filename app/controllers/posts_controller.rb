@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
+  before_filter :authenticate_user!, :only => [:new,:create]
   def index
-    @posts = Post.find(:all,:order => "created_at desc")
+    @posts = Post.order("created_at desc")
 
     respond_to do |format|
       format.html # index.html.erb

@@ -1,11 +1,10 @@
 <div>
-  <p>
-    <div class = "well">
-      <strong>Pseudonimo:</strong></br>
-      <%= comment.pseudonimo %></br>
-      <strong>Comment:</strong></br>
-      <%= comment.mensaje %></br>
-      <strong><%= time_ago_in_words(comment.created_at) + " ago" %></strong>
-    </div>
-  </p>
+  <div class = "well">
+    <fieldset>
+      <legend><%= comment.pseudonimo.upcase%></legend>    
+        <strong>Comment:</strong></br>
+        <h5><%= comment.mensaje %></h5></br>
+        <strong><%= time_ago_in_words(comment.created_at) + " ago" %></strong>
+      </fieldset>
+  </div>
 </div>
