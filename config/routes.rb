@@ -1,5 +1,9 @@
 Blogkdc::Application.routes.draw do
-  resources :posts
+  devise_for :users
+
+  resources :posts do
+    resources :comments
+  end
   root to: 'posts#index'
 
   # The priority is based upon order of creation:

@@ -3,7 +3,9 @@
 one:
   pseudonimo: MyString
   mensaje: MyText
+  post_id: 1
 
 two:
   pseudonimo: MyString
   mensaje: MyText
+  post_id: 1
