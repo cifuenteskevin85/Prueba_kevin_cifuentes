@@ -1,4 +1,5 @@
 <strong>New Comment</strong>
+<sub>For more information on the syntax of x click <%= link_to "here", "http://daringfireball.net/projects/markdown/syntax#html" %></sub>
   <%= simple_form_for([@post,@post.comments.build], html: {class: 'well'}) do |f| %>
     <% if @post.errors.any? %>
       <div id="error_explanation">
