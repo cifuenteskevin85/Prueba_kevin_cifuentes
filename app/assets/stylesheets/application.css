@@ -12,7 +12,3 @@
  *= boostrap.css
  *= require_tree .
  */
-
-textarea {
-	width: 500px;
-}
