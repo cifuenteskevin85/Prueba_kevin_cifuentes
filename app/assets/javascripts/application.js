@@ -13,3 +13,14 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+$(function () {  
+  if ($('#comments').length > 0) {  
+    setTimeout(updateComments, 10000);  
+  }  
+});  
+  
+function updateComments() {  
+  $.getScript('/comments.js');  
+  setTimeout(updateComments, 10000);  
+}  

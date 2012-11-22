@@ -1,5 +1,5 @@
 <strong>New Comment</strong>
-<sub>For more information on the syntax of x click <%= link_to "here", "http://daringfireball.net/projects/markdown/syntax#html" %></sub>
+<sub>For more information on the syntax of x click <%= link_to "here", "http://daringfireball.net/projects/markdown/syntax#html", :popup => ['dialog name','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes'] %></sub>
   <%= simple_form_for([@post,@post.comments.build], html: {class: 'well'}) do |f| %>
     <% if @post.errors.any? %>
       <div id="error_explanation">
@@ -13,7 +13,12 @@
       </div>
     <% end %>
     <p>
-      <%= f.input  :pseudonimo %>
+      <% if user_signed_in? %>
+        <h3>Pseudonimo: <strong><%=current_user.full_name %></strong></h3>
+        <%= f.hidden_field :pseudonimo, :value => current_user.full_name %>
+      <%else%>
+        <%= f.input  :pseudonimo %>
+      <%end %>
     </p>
     <p>
       <%= f.input :mensaje, :input_html => {class: "textarea_cust"} %>

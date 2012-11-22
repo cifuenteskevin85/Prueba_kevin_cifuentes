@@ -1,5 +1,19 @@
 class PostsController < ApplicationController
   before_filter :authenticate_user!, :only => [:new,:create]
+  before_filter :authenticate_same_user, :only => [:destroy, :edit]
+  #Metodo para la autenticacion del edit and Destroy
+  def authenticate_same_user
+    @post = Post.find(params[:id])
+      if current_user == @post.user
+        true
+      else
+        redirect_to post_path(@post), :alert => "You are not authorized to edit this post"
+        
+      end
+  end
+
+
+
   def index
     @posts = Post.order("created_at desc")
 
@@ -36,5 +50,12 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to posts_path, :notice => "Post Guardado!"
     end
+  end
+
+  def edit
+    @post = Post.find(params[:id])
+  end
+
+  def destroy
   end
 end

@@ -6,6 +6,11 @@ Devise.setup do |config|
   config.omniauth :facebook, "384902461586599", "310a411d19ffa12a75c40029f8b1a174"
   config.omniauth :facebook, "384902461586599", "310a411d19ffa12a75c40029f8b1a174", :strategy_class => OmniAuth::Strategies::Facebook
 
+  config.omniauth :facebook, "384902461586599", "310a411d19ffa12a75c40029f8b1a174",
+      :client_options => {:ssl =>{:verify => false}} # for MACOX {:ca_path => '/etc/ssl/certs'}
+  
+
+
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class with default "from" parameter.

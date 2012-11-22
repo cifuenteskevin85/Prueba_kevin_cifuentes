@@ -6,13 +6,16 @@
 
 <% @posts.each do |posts| %>
   <div class = "pots">
-    <strong><%= posts.title %></strong>
+    <h1><strong><%= link_to posts.title, posts %></strong></h1>
+    <p><sub>posteado el <%= posts.created_at.strftime("%d-%M, %Y") %></sub></p>
     <p><%= posts.content %></p>
     <div class="meta">
       <%= link_to time_ago_in_words(posts.created_at) + " ago", posts %>
-      <span class = "admin"> 
-       | <%= link_to "Delete", posts, method: :delete, data: { confirm: "Are you suere your want to delete this status?"} %>
-      </span>
+      <% if user_signed_in? %>
+        <% if current_user == posts.user %>
+          <%= link_to "Edit", edit_post_path(posts) %> 
+          <% end %>
+      <% end %>
     </div>
   </div>
 <% end %>
