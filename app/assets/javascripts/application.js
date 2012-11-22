@@ -20,7 +20,9 @@ $(function () {
   }  
 });  
   
-function updateComments() {  
-  $.getScript('/comments.js');  
-  setTimeout(updateComments, 10000);  
+function updateComments() {
+  var post_id = $('#post').attr('data-id');  
+  var after = $('.comment:first').attr('data-time');  
+  $.getScript('/posts/' + post_id + '/comments.js?after=' + after);  
+  setTimeout(updateComments, 10000); 
 }  
