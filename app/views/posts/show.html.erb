@@ -49,6 +49,7 @@
       <p>
         <b>Title:</b>
         <h1><strong><%= @post.title %></strong></h1>
+        <%= image_tag @post.imagen.url(:original) %>
       </p>
       <p>
         <b>Content:</b>

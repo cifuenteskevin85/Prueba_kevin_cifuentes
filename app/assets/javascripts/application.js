@@ -26,3 +26,9 @@ function updateComments() {
   $.getScript('/posts/' + post_id + '/comments.js?after=' + after);  
   setTimeout(updateComments, 10000); 
 }  
+
+$(function(){
+	$('.lik').live('click',function(){
+		alert('KDC')
+	});
+});

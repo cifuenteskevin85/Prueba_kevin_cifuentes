@@ -7,6 +7,7 @@
         <h5><%= markdown(comment.mensaje) %></h5></br>
         <strong><%= time_ago_in_words(comment.created_at) + " ago" %></strong>
       </fieldset>
+      <%= render "likes/like" %>
     </div>
   </div>
 </div>

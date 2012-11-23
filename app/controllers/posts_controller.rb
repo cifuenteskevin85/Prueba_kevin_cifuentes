@@ -49,6 +49,9 @@ class PostsController < ApplicationController
 
     if @post.save
       redirect_to posts_path, :notice => "Post Guardado!"
+    else
+      flash[:error] = @post.errors.inspect
+      render action: "new"
     end
   end
 

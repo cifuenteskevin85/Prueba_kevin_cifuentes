@@ -6,16 +6,25 @@
 
 <% @posts.each do |posts| %>
   <div class = "pots">
-    <h1><strong><%= link_to posts.title, posts %></strong></h1>
-    <p><sub>posteado el <%= posts.created_at.strftime("%d-%M, %Y") %></sub></p>
-    <p><%= posts.content %></p>
-    <div class="meta">
-      <%= link_to time_ago_in_words(posts.created_at) + " ago", posts %>
-      <% if user_signed_in? %>
-        <% if current_user == posts.user %>
-          <%= link_to "Edit", edit_post_path(posts) %> 
-          <% end %>
-      <% end %>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span2">
+          <%= image_tag posts.imagen.url(:thumb) %>
+        </div>
+        <div class="span10">
+          <h1><strong><%= %><%= link_to posts.title, posts %></strong></h1>
+          <p><sub>posteado el <%= posts.created_at.strftime("%d-%M, %Y") %></sub></p>
+          <p><%= posts.content %></p>
+          <div class="meta">
+            <%= link_to time_ago_in_words(posts.created_at) + " ago", posts %>
+            <% if user_signed_in? %>
+              <% if current_user == posts.user %>
+                <%= link_to "Edit", edit_post_path(posts) %> 
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 <% end %>

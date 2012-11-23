@@ -11,9 +11,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121121170724) do
+ActiveRecord::Schema.define(:version => 20121123220232) do
 
-  create_table "comments", :id => false, :force => true do |t|
+  create_table "comments", :force => true do |t|
     t.string   "pseudonimo"
     t.text     "mensaje"
     t.integer  "post_id"
@@ -21,14 +21,26 @@ ActiveRecord::Schema.define(:version => 20121121170724) do
     t.datetime "updated_at", :null => false
   end
 
+  add_index "comments", ["id"], :name => "index_comments_on_id", :unique => true
   add_index "comments", ["post_id"], :name => "index_comments_on_post_id"
+
+  create_table "likes", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "comment_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "posts", :force => true do |t|
     t.string   "title"
     t.text     "content"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
     t.integer  "user_id"
+    t.string   "imagen_file_name"
+    t.string   "imagen_content_type"
+    t.integer  "imagen_file_size"
+    t.datetime "imagen_updated_at"
   end
 
   add_index "posts", ["user_id"], :name => "index_posts_on_user_id"
@@ -50,8 +62,12 @@ ActiveRecord::Schema.define(:version => 20121121170724) do
     t.datetime "updated_at",                             :null => false
     t.string   "provider"
     t.string   "uid"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
   end
 
+  add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 

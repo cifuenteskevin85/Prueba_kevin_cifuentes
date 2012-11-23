@@ -6,8 +6,6 @@
 development:
   adapter: postgresql
   database: blogkdc_db
-  #username: postgres
-  #password: 8510
   pool: 5
   timeout: 5000
 
@@ -17,7 +15,5 @@ development:
 test:
   adapter: postgresql
   database: blogkdc_db_test
-  #username: postgres
-  #password: 8510
   pool: 5
   timeout: 5000

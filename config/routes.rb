@@ -1,4 +1,5 @@
 Blogkdc::Application.routes.draw do
+
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   
   resources :users do
@@ -8,6 +9,8 @@ Blogkdc::Application.routes.draw do
   resources :posts do
     resources :comments
   end
+
+  resources :likes
   root to: 'posts#index'
 
   # The priority is based upon order of creation:
